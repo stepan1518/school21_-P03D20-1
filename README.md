@@ -35,7 +35,7 @@ You repeat this simple operation several times and realize that every time you c
 
 While you're staring at the screen on the door and thinking, the text suddenly changes:
 
-    Insert a punched card with an (x^2-x^3)/4 graph into the slot for entry...
+    Insert a punched card with an (x*x-x*x*x)/4 graph into the slot for entry...
 
 Looks like there is also a timer changing the graph to make it more difficult..
 

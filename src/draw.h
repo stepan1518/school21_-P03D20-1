@@ -2,15 +2,13 @@
 #define DRAW_H
 
 #include <stdio.h>
+#include <math.h>
+
 #include "func_limits.h"
 
-void draw(double* f, size_t size);
+#define N_POINTS 80
+#define Y_POINTS 25
 
-int main() {
-    double f[3] = {1, 2, 3};
-    draw(f, 3);
-
-    return 0;
-}
+void draw(double* f, double start, double step);
 
 #endif

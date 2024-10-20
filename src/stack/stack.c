@@ -39,10 +39,13 @@ int is_empty(struct stack* token_stack) {
 }
 void push(struct stack* token_stack, struct token new_token) {
     if (!is_full(token_stack))
-        token_stack->tokens[++(token_stack->top)] = new_token;
+        token_stack->tokens[++token_stack->top] = new_token;
 }
 struct token pop(struct stack* token_stack) {
-    return (is_empty(token_stack)) ? (struct token){NUMBER, {NAN}} : token_stack->tokens[(token_stack->top)--];
+    return (is_empty(token_stack)) ? (struct token){UNDEFINED, {.value = NAN}} : token_stack->tokens[(token_stack->top)--];
+}
+struct token peek(struct stack* token_stack) {
+    return (is_empty(token_stack)) ? (struct token){UNDEFINED, {.value = NAN}} : token_stack->tokens[(token_stack->top)];
 }
 void destroy(struct stack* token_stack) {
     free(token_stack->tokens);

@@ -4,14 +4,16 @@
 #include <stdlib.h>
 #include <math.h>
 
-#define TOKEN_LEN 32
+enum TokenTag {NUMBER, OPERATOR, UNDEFINED};
+enum TokegId {LPARENTHESIS, RPARENTHESIS, ADDITION, SUBTRACTION, MULTIPLICATION, DIVISION, SIN, COS, TAN, CTG, SQRT, LN, X};
 
-enum TokenTag {NUMBER, FUNCTION, PARENTHESIS, OPERATOR, WHITESPACE, UNDEFINED};
-
-// Token is tagged union structure (either a number or an operator)
+// Token is tagged union structure
 struct token {
     enum TokenTag tag;
-    char* string;
+    union {
+        long long id;
+        double value;
+    };
 };
 struct stack {
     size_t size;
@@ -25,6 +27,7 @@ int is_full(struct stack*);
 int is_empty(struct stack*);
 void push(struct stack*, struct token);
 struct token pop(struct stack*);
+struct token peek(struct stack*);
 void destroy(struct stack*);
 
 #endif // STACK_H

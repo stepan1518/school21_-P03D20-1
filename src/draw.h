@@ -5,6 +5,7 @@
 #include <math.h>
 
 #include "func_limits.h"
+#include "parser.h"
 
 #define N_POINTS 80
 #define Y_POINTS 25

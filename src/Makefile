@@ -1,17 +1,17 @@
-wgcc = gcc -Wall -Werror -Wextra
-BUILD_PATH = ../build/graph
+CC = gcc
+FLAGS = -std=c11 -Wall -Werror -Wextra
+BUILD_PATH = ../build/
 
-all:	graph.o draw.o
-	$(wgcc) -o $(BUILD_PATH) $^
+# "build" target build executable file of the app graph 
+build: all
 
-graph.o:
-	$(wgcc) -c graph.c
+# "rebuild" target clean and build the app from scratch
+rebuild: clean build
 
-draw.o:
-	$(wgcc) -c draw.c
+# "all" target build executable file of the app graph
+all: main.c stack/stack.c parser/parser.c graph/graph.c calculation/calculation.c
+	$(CC) $(FLAGS) -o $(BUILD_PATH)graph main.c stack/stack.c parser/parser.c graph/graph.c calculation/calculation.c
 
+# "clean" target delete everything in build directory
 clean:
-	rm $(BUILD_PATH) *.o
-run:
-	clear
-	$(BUILD_PATH)
+	rm -rf $(BUILD_PATH)*
